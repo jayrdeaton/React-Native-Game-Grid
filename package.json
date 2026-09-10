@@ -1,6 +1,6 @@
 {
   "name": "@tastic/grid",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Pure coordinate math and BFS reachability for tile/board-based games: bounds checks, cell/pixel conversion, adjacency, and flood-fill reachability queries",
   "keywords": [
     "react-native",
