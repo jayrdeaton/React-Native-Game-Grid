@@ -44,7 +44,10 @@ Always run `npm run lint` before finishing any task.
 npm run release:patch   # npm version patch && git push --follow-tags (or release:minor / release:major)
 ```
 
-`preversion` runs `npm run verify` first. `prepublishOnly` runs `npm run build`.
+`preversion` runs `npm run verify` first. `prepublishOnly` runs `npm run build`. `publish.yml` fires on
+`v*` tags and delegates to the shared reusable workflow
+(`infinitetoken/Workflows/.github/workflows/npm-publish.yml@v1`) with `id-token: write` for OIDC
+trusted publishing (no `NPM_TOKEN`) — published live at https://www.npmjs.com/package/@tastic/grid.
 
 ## Architecture
 
@@ -105,3 +108,10 @@ Enforced by ESLint + Prettier (`eslint.config.cjs` is a bare
 Follows the same Prettier/ESLint conventions as the rest of the `@tastic` package family (single
 quotes, no semicolons, no trailing commas, `simple-import-sort`, `react-hooks/rules-of-hooks` as an
 error) — see `@tastic/input`'s own CLAUDE.md for the full rule list, unchanged here.
+
+## CI
+
+`.github/workflows/ci.yml` uses the shared reusable workflow
+(`infinitetoken/Workflows/.github/workflows/npm-ci.yml@v1`, defaults to `npm run verify`) — runs on
+every PR and push to `main`, same as every other package in the fleet. See Release above for
+`publish.yml`.
