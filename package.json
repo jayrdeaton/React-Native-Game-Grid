@@ -1,0 +1,85 @@
+{
+  "name": "@tastic/grid",
+  "version": "0.1.0",
+  "description": "Pure coordinate math and BFS reachability for tile/board-based games: bounds checks, cell/pixel conversion, adjacency, and flood-fill reachability queries",
+  "keywords": [
+    "react-native",
+    "expo",
+    "grid",
+    "board",
+    "flood-fill",
+    "bfs",
+    "coordinates"
+  ],
+  "homepage": "https://github.com/jayrdeaton/react-native-game-grid#readme",
+  "bugs": {
+    "url": "https://github.com/jayrdeaton/react-native-game-grid/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayrdeaton/react-native-game-grid.git"
+  },
+  "license": "MIT",
+  "author": "Jay Deaton",
+  "sideEffects": false,
+  "type": "commonjs",
+  "exports": {
+    ".": {
+      "react-native": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "react-native": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "!src/__tests__",
+    "!src/__mocks__"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "build:watch": "tsup --watch",
+    "fix": "eslint --fix",
+    "lint": "eslint",
+    "prepublishOnly": "npm run build",
+    "release": "git push --follow-tags",
+    "release:major": "npm version major && npm run release",
+    "release:minor": "npm version minor && npm run release",
+    "release:patch": "npm version patch && npm run release",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "typecheck": "tsc --noEmit",
+    "verify": "npm run lint && npm test && npm run typecheck && npm run build",
+    "preversion": "npm run verify"
+  },
+  "prettier": "@infinitetoken/eslint-config/prettier",
+  "devDependencies": {
+    "@infinitetoken/eslint-config": "^0.2.0",
+    "@infinitetoken/jest-config": "^0.2.4",
+    "@infinitetoken/tsconfig": "^0.4.1",
+    "@tastic/core": "^0.2.0",
+    "@tastic/input": "^0.2.0",
+    "@types/jest": "^30.0.0",
+    "@types/react": "^19.2.18",
+    "eslint": "^9.39.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-native": "^5.0.0",
+    "jest": "^30.5.1",
+    "jest-environment-jsdom": "^30.5.1",
+    "prettier": "^3.8.3",
+    "react": "^19.0.0",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3"
+  },
+  "peerDependencies": {
+    "@tastic/input": ">=0.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
