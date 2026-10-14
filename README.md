@@ -30,18 +30,18 @@ const isTrapped = reachable === null
 
 ## API
 
-- `GridCell`, `GridSize` — plain coordinate/dimension shapes
-- `ALL_DIRECTIONS` — the 4 cardinal directions, fixed order
-- `computeGridSize(width, height, cellPx)` — how many whole cells fit a pixel area
-- `cellToPixel(cell, cellPx)` / `pixelToCell(point, cellPx)` — inverse conversions between grid and pixel space
-- `cellKey(cell)` — stable string key for `Set`/`Map` occupancy tracking
-- `isInBounds(cell, grid)` — bounds check
-- `wrapCell(cell, grid)` — re-enters an off-grid cell from the opposite edge, for wrap-around/torus topology
-- `stepCell(cell, direction)` — one step in a cardinal direction
-- `isAdjacent(a, b)` — true when two cells are exactly one step apart
-- `countReachableCells(start, grid, occupied, maxCount?)` — BFS: how many cells are reachable from `start` without crossing `occupied` cells or the grid edge
-- `distanceToNearestTarget(start, grid, occupied, targets, maxCount?)` — BFS: shortest step-distance from `start` to any cell in `targets`, or `null` if none is reachable — the shape a "can this entity still reach that cell" / trapped check needs
-- `Direction`, `flipDirection`, `isOppositeDirection` — re-exported from `@tastic/input`
+- `GridCell`, `GridSize` - plain coordinate/dimension shapes
+- `ALL_DIRECTIONS`: the 4 cardinal directions, fixed order
+- `computeGridSize(width, height, cellPx)`: how many whole cells fit a pixel area
+- `cellToPixel(cell, cellPx)` / `pixelToCell(point, cellPx)` - inverse conversions between grid and pixel space
+- `cellKey(cell)`: stable string key for `Set`/`Map` occupancy tracking
+- `isInBounds(cell, grid)`: bounds check
+- `wrapCell(cell, grid)`: re-enters an off-grid cell from the opposite edge, for wrap-around/torus topology
+- `stepCell(cell, direction)`: one step in a cardinal direction
+- `isAdjacent(a, b)`: true when two cells are exactly one step apart
+- `countReachableCells(start, grid, occupied, maxCount?)`: BFS: how many cells are reachable from `start` without crossing `occupied` cells or the grid edge
+- `distanceToNearestTarget(start, grid, occupied, targets, maxCount?)`: BFS: shortest step-distance from `start` to any cell in `targets`, or `null` if none is reachable - the shape a "can this entity still reach that cell" / trapped check needs
+- `Direction`, `flipDirection`, `isOppositeDirection` - re-exported from `@tastic/input`
 
 ## License
 

@@ -5,7 +5,7 @@ import { ALL_DIRECTIONS, cellKey, type GridCell, type GridSize, isInBounds, step
 // since a caller may run this fresh for every candidate move, every tick.
 //
 // `maxCount` stops the fill early once the queue reaches that many cells, bounding worst-case cost
-// at O(maxCount) regardless of grid size — useful when a caller only needs to know "is there at
+// at O(maxCount) regardless of grid size - useful when a caller only needs to know "is there at
 // least N cells of room," not an exact count. Defaults to unbounded.
 export function countReachableCells(start: GridCell, grid: GridSize, occupied: ReadonlySet<string>, maxCount: number = Infinity): number {
   if (!isInBounds(start, grid) || occupied.has(cellKey(start))) return 0

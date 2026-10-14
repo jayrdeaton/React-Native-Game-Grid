@@ -40,7 +40,7 @@ describe('distanceToNearestTarget', () => {
   })
 
   it('returns null when no target is reachable', () => {
-    // Wall off column x=1 entirely, sealing x=0 away from the target at x=3 — this is the exact
+    // Wall off column x=1 entirely, sealing x=0 away from the target at x=3 - this is the exact
     // shape of a trapped-enemy check: an entity's pocket cut off from the target it needs to reach.
     const occupied = new Set([0, 1, 2, 3, 4].map((y) => cellKey({ x: 1, y })))
     const targets = new Set([cellKey({ x: 3, y: 0 })])
