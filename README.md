@@ -7,7 +7,7 @@ Part of the [`@tastic`](https://www.npmjs.com/org/tastic) package ecosystem (the
 ## Install
 
 ```bash
-npm install @tastic/grid @tastic/input
+npm install @tastic/grid @tastic/input @tastic/core
 ```
 
 ## Usage
@@ -31,17 +31,22 @@ const isTrapped = reachable === null
 ## API
 
 - `GridCell`, `GridSize` - plain coordinate/dimension shapes
-- `ALL_DIRECTIONS`: the 4 cardinal directions, fixed order
-- `computeGridSize(width, height, cellPx)`: how many whole cells fit a pixel area
-- `cellToPixel(cell, cellPx)` / `pixelToCell(point, cellPx)` - inverse conversions between grid and pixel space
-- `cellKey(cell)`: stable string key for `Set`/`Map` occupancy tracking
+- `ALL_DIRECTIONS`: the 4 cardinal directions, fixed order (`['up', 'down', 'left', 'right']`)
+- `computeGridSize(width, height, cellPx)`: how many whole cells fit a pixel area (at least 1 each way)
+- `cellToPixel(cell, cellPx)` / `pixelToCell(point, cellPx)` - inverse conversions between grid and pixel space (`pixelToCell` floors, so any point inside a cell maps to it)
+- `cellKey(cell)`: stable string key (`'x,y'`, e.g. `'3,4'`) for `Set`/`Map` occupancy tracking
 - `isInBounds(cell, grid)`: bounds check
 - `wrapCell(cell, grid)`: re-enters an off-grid cell from the opposite edge, for wrap-around/torus topology
 - `stepCell(cell, direction)`: one step in a cardinal direction
 - `isAdjacent(a, b)`: true when two cells are exactly one step apart
-- `countReachableCells(start, grid, occupied, maxCount?)`: BFS: how many cells are reachable from `start` without crossing `occupied` cells or the grid edge
-- `distanceToNearestTarget(start, grid, occupied, targets, maxCount?)`: BFS: shortest step-distance from `start` to any cell in `targets`, or `null` if none is reachable - the shape a "can this entity still reach that cell" / trapped check needs
+- `countReachableCells(start, grid, occupied, maxCount?)`: BFS: how many cells are reachable from `start` (counting it) without crossing `occupied` cells or the grid edge; `0` when `start` is off the grid or occupied. `maxCount` (default unbounded) stops the fill once that many cells are found, for an "at least N cells of room" check: the result is then `maxCount` or a few more, not an exact count
+- `distanceToNearestTarget(start, grid, occupied, targets, maxCount?)`: BFS: shortest step-distance from `start` to any cell in `targets` (keys from `cellKey`), or `null` if none is reachable - the shape a "can this entity still reach that cell" / trapped check needs. `0` when `start` is a target; `null` too when `start` is off the grid or occupied, or when the fill reaches `maxCount` cells first
 - `Direction`, `flipDirection`, `isOppositeDirection` - re-exported from `@tastic/input`
+
+## Peer dependencies
+
+`@tastic/input` (>=0.2.0): `Direction`, `flipDirection` and `isOppositeDirection` come from its root
+entry, which needs `@tastic/core` as its own peer.
 
 ## License
 
