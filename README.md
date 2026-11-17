@@ -51,3 +51,7 @@ entry, which needs `@tastic/core` as its own peer.
 ## License
 
 MIT
+
+---
+
+Made by [Infinite Token](https://www.infinitetoken.com), the team behind [Lumber](https://lumber.infinitetoken.com): end-to-end encrypted logging.
